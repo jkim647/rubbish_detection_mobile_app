@@ -3,10 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from './HomeScreen';
-import FriendsScreen from './FriendsScreen';
+import FootPrintUpdate from './FootPrint';
 import { FriendsContext } from './FriendsContext';
 import HistoryScreen from './HistoryScreen';
 import OpenCamera from './openCamera'
+
 
 
 
@@ -62,6 +63,7 @@ class App extends React.Component {
         <Stack.Screen
             name="Home"
             component={HomeScreen}
+            
           />
         <Stack.Screen
           name="Camera"
@@ -70,6 +72,10 @@ class App extends React.Component {
         <Stack.Screen
           name="history"
           component={HistoryScreen}
+        />
+        <Stack.Screen
+          name="FootPrint"
+          component={FootPrintUpdate}
         />
         </Stack.Navigator>
       </NavigationContainer>

@@ -4,33 +4,46 @@ import { FriendsContext } from './FriendsContext';
 
 class HomeScreen extends React.Component {
   render() {
-    console.log(this.score)
+    console.log(this.context.score)
     return (
-      <View>
+      
         
-        <Button
-          title="Upload from file"
-          onPress={() =>
-            this.props.navigation.navigate('file')
-          }
-        />
-        <Button
-          title="See previous snapshot"
-          onPress={() =>
-            this.props.navigation.navigate('history')
-          }
-        />
-        <Text>{this.score}</Text>
+      <View style={{flex: 1, flexDirection: 'column'}}>
+        <View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: 'powderblue'}}>
+          <Text style={{fontSize: 20, marginTop:20}}>Your Foot Print Score this month! </Text>
+          <Text style={{fontSize: 20}}>{this.context.score}</Text>
+        </View>
+        <View style={{flex: 1, flexDirection: 'column', alignItems: 'stretch', justifyContent: 'flex-end'}}>
+          <View style={{ height: 100, backgroundColor: 'powderblue', flexDirection: 'column', justifyContent: 'center'}}>
+            <Button
+              title="Update my footprint"
+              onPress={() =>
+              this.props.navigation.navigate('FootPrint')
+              }
+            />
+          </View>
+          <View style={{height: 100, backgroundColor: 'yellow', flexDirection: 'column', justifyContent: 'center'}}>
+            <Button
+              title="See previous snapshot"
+              onPress={() =>
+              this.props.navigation.navigate('history')
+              }
+            />
+          </View>
 
-        <Button
-          title="Take a picture"
-          onPress={() =>
-            this.props.navigation.navigate('Camera')
-          }
-        />
-        
+          <View style={{height: 100, backgroundColor: 'greenyellow', flexDirection: 'column', justifyContent: 'center'}}>
+            <Button
+              title="Take a rubbish"
+              onPress={() =>
+              this.props.navigation.navigate('Camera')
+              }
+          />
+          </View>
+
+        </View>
 
       </View>
+      
 
       
     );
