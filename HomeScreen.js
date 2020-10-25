@@ -1,8 +1,21 @@
 import React from 'react';
 import {View, Button,Text} from 'react-native';
 import { FriendsContext } from './FriendsContext';
+import {firebase} from './axios/axios'
 
 class HomeScreen extends React.Component {
+  
+  componentDidMount(){
+    console.log('fetched')
+    const ref = firebase.database().ref("2020/10")
+    ref.then((result) => {
+      console.log(result) 
+    })
+    console.log(ref)
+    
+
+  }
+
   render() {
     console.log(this.context.score)
     return (
