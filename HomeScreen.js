@@ -4,20 +4,60 @@ import { FriendsContext } from './FriendsContext';
 import {firebase} from './axios/axios'
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+        container: null
+    }
+  }
+
   
   componentDidMount(){
-    console.log('fetched')
-    const ref = firebase.database().ref("2020/10")
-    ref.then((result) => {
-      console.log(result) 
+    var data = new FormData();
+    data.append('my_photo',{
+      uri:'none',
+      name:'marie.jpeg',
+      type:'image/jpeg'
     })
-    console.log(ref)
+    fetch('http://127.0.0.1:5000/predict').then( 
+      response => response.json()
+    ).then(data => console.log(data)).catch((error) => {
+      console.log(error)  
+    })
+
+    fetch('http://127.0.0.1:5000/predict',{
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'multipart/form-data'
+      },
+      method: 'POST',
+      body: data
+    }).then(
+      response => response.json()
+    ).catch((error) => {
+      console.log(error)
+    })
+    
+    console.log('fetched')
+    const ref = firebase.database().ref("/2020/10");
+    ref.once('value').then(snapshot => {
+      
+      this.setState({container: snapshot})
+    })
+    
+
+    
     
 
   }
 
   render() {
-    console.log(this.context.score)
+
+    if(this.state.container != null){
+      const test = Object.entries(this.state.container)
+      
+    }
+    
     return (
       
         
